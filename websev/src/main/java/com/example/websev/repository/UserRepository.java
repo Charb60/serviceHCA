@@ -38,7 +38,7 @@ public class UserRepository {
             user.setId(((String) result[0]));
             user.setName((String) result[1]);
             user.setSurname((String) result[2]);
-            user.setAge(((Integer) result[3]).longValue());
+            user.setAge(Long.parseLong((String) result[3]));
             users.add(user);
         });
 

@@ -74,34 +74,34 @@ public class UserController {
 
     }
 
-    @PutMapping(value ="user-and-image",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> addUserImageController(@RequestParam (name = "userData") String userData,
-                                                         @RequestParam (name = "image") MultipartFile image) throws IOException {
-
-        ObjectMapper objectMepper = new ObjectMapper();
-        User user = objectMepper.readValue(userData, User.class);
-        byte[] imageUser = image.getBytes();
-        user.setImage(imageUser);
-        try {
-            int result = userRepository.insertNewUser(user);
-            if (result != 0) {
-                return ResponseEntity
-                        .ok()
-                        .body("add new user successfully");
-
-            }else {
-                return ResponseEntity
-                        .ok()
-                        .body("add new user failed");
-            }
-            }catch (Exception ex) {
-            return ResponseEntity
-                    .internalServerError()
-                    .body("Can not add new user cause SQL problem: ");
-
-
-        }
-    }
+//    @PostMapping(value ="user-and-image",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<String> addUserImageController(@RequestParam (name = "userData") String userData,
+//                                                         @RequestParam (name = "image") MultipartFile image) throws IOException {
+//
+//        ObjectMapper objectMepper = new ObjectMapper();
+//        User user = objectMepper.readValue(userData, User.class);
+//        byte[] imageUser = image.getBytes();
+//        user.setImage(imageUser);
+//        try {
+//            int result = userRepository.insertNewUser(user);
+//            if (result != 0) {
+//                return ResponseEntity
+//                        .ok()
+//                        .body("add new user successfully");
+//
+//            }else {
+//                return ResponseEntity
+//                        .ok()
+//                        .body("add new user failed");
+//            }
+//            }catch (Exception ex) {
+//            return ResponseEntity
+//                    .internalServerError()
+//                    .body("Can not add new user cause SQL problem: ");
+//
+//
+//        }
+//    }
 
 
 }

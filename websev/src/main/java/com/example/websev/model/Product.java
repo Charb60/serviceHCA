@@ -1,17 +1,49 @@
 package com.example.websev.model;
 
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "product")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
     private Long productId;
+
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<ImageProduct> images;
+
+
+
+
+    @Column(name = "selected_property_type")
     private String selectedPropertyType;
+    @Column(name = "selected_price_range")
     private String selectedPriceRange;
+    @Column(name = "selected_room_range")
     private String selectedRoomRange;
-    private String selectedBathroomRange;
+    @Column(name = "selected_bath_room_range")
+    private String selectedBathRoomRange;
+    @Column(name = "selected_location_range")
     private String selectedLocationRange;
+    @Column(name = "selected_area_range")
     private String selectedAreaRange;
+    @Column(name = "selected_floor_range")
     private String selectedFloorRange;
+    @Column(name = "is_checked")
     private boolean isChecked;
-private String productName;
-private String productTitle;
+    @Column(name = "product_name")
+    private String productName;
+    @Column(name = "product_title")
+    private String productTitle;
+    @Column(name = "latitude")
+    private String latitude;
+    @Column(name = "longitude")
+    private String longitude;
+
     public Long getProductId() {
         return productId;
     }
@@ -19,6 +51,7 @@ private String productTitle;
     public void setProductId(Long productId) {
         this.productId = productId;
     }
+
     public String getSelectedPropertyType() {
         return selectedPropertyType;
     }
@@ -43,12 +76,12 @@ private String productTitle;
         this.selectedRoomRange = selectedRoomRange;
     }
 
-    public String getSelectedBathroomRange() {
-        return selectedBathroomRange;
+    public String getSelectedBathRoomRange() {
+        return selectedBathRoomRange;
     }
 
-    public void setSelectedBathroomRange(String selectedBathroomRange) {
-        this.selectedBathroomRange = selectedBathroomRange;
+    public void setSelectedBathRoomRange(String selectedBathRoomRange) {
+        this.selectedBathRoomRange = selectedBathRoomRange;
     }
 
     public String getSelectedLocationRange() {
@@ -71,7 +104,7 @@ private String productTitle;
         return selectedFloorRange;
     }
 
-    public void setSlectedFloorRange(String selectedFloorRange) {
+    public void setSelectedFloorRange(String selectedFloorRange) {
         this.selectedFloorRange = selectedFloorRange;
     }
 
@@ -99,5 +132,30 @@ private String productTitle;
     public void setProductTitle(String productTitle) {
         this.productTitle = productTitle;
     }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public List<ImageProduct> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ImageProduct> images) {
+        this.images = images;
+    }
+
 }
 
